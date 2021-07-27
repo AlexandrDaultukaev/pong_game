@@ -9,16 +9,21 @@ sc.bgcolor("black")
 sc.title("Pong Game")
 sc.tracer(0)
 sc.listen()
-l_pad = Paddle(350, 0)
-r_pad = Paddle(-350, 0)
+r_pad = Paddle(350, 0)
+l_pad = Paddle(-350, 0)
 ball = Ball()
 # Event handlers
-sc.onkey(l_pad.up, "Up")
-sc.onkey(l_pad.down, "Down")
-sc.onkey(r_pad.up, "w")
-sc.onkey(r_pad.down, "s")
+sc.onkey(r_pad.up, "Up")
+sc.onkey(r_pad.down, "Down")
+sc.onkey(l_pad.up, "w")
+sc.onkey(l_pad.down, "s")
+
+
 game_is_on = True
 while game_is_on:
+    if (ball.distance(r_pad) < 50 and (340 < ball.xcor() < 345)) or (ball.distance(l_pad) < 50 and
+                                                                     (-345 < ball.xcor() < -340)):
+        ball.bounce_x *= -1
     ball.move()
     time.sleep(0.0001)
     sc.update()
