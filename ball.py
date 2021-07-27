@@ -5,6 +5,7 @@ class Ball(Turtle):
 
     def __init__(self):
         super().__init__()
+        self.sleep_time = 0.001
         self.STEP = 4
         self.penup()
         self.bounce_x = 1
@@ -21,6 +22,7 @@ class Ball(Turtle):
 
     def bounce_control_x(self):
         self.bounce_x *= -1
+        self.sleep_time *= 0.8
 
     def move(self):
         new_x = self.xcor() + self.STEP * self.bounce_x
@@ -29,5 +31,6 @@ class Ball(Turtle):
         self.bounce_control_y()
 
     def reset_position(self):
+        self.sleep_time = 0.001
         self.goto(0, 0)
         self.bounce_x *= -1

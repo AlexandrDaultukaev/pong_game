@@ -20,7 +20,6 @@ sc.onkey(r_pad.down, "Down")
 sc.onkey(l_pad.up, "w")
 sc.onkey(l_pad.down, "s")
 
-
 game_is_on = True
 while game_is_on:
     if (ball.distance(r_pad) < 50 and (340 < ball.xcor() < 345)) or (ball.distance(l_pad) < 50 and
@@ -33,7 +32,7 @@ while game_is_on:
         score.increase_score(1)
         ball.reset_position()
     ball.move()
-    time.sleep(0.0001)
+    time.sleep(ball.sleep_time)
     sc.update()
 
 
