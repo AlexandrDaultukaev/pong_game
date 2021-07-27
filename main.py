@@ -25,7 +25,7 @@ game_is_on = True
 while game_is_on:
     if (ball.distance(r_pad) < 50 and (340 < ball.xcor() < 345)) or (ball.distance(l_pad) < 50 and
                                                                      (-345 < ball.xcor() < -340)):
-        ball.bounce_x *= -1
+        ball.bounce_control_x()
     elif ball.xcor() > 495:
         score.increase_score(0)
         ball.reset_position()

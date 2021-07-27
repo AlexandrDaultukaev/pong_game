@@ -15,15 +15,18 @@ class Ball(Turtle):
         self.shapesize(stretch_wid=1, stretch_len=1)
         self.setheading(self.angle_heading)
 
-    def bounce_control(self):
+    def bounce_control_y(self):
         if self.ycor() > 285 or self.ycor() < -285:
             self.bounce_y *= -1
+
+    def bounce_control_x(self):
+        self.bounce_x *= -1
 
     def move(self):
         new_x = self.xcor() + self.STEP * self.bounce_x
         new_y = self.ycor() + self.STEP * self.bounce_y
         self.goto(new_x, new_y)
-        self.bounce_control()
+        self.bounce_control_y()
 
     def reset_position(self):
         self.goto(0, 0)
